@@ -1,0 +1,422 @@
+/* styles.css - Grocery background, greyish items with blueish box shadow */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* ========== NICE GROCERY BACKGROUND ========== */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 50%, #081c15 100%);
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+/* fresh produce pattern overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.png');
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* decorative grocery emojis floating in background */
+body::after {
+    content: "🥬 🥑 🍅 🥝 🍊 🥦 🍎 🥕";
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    font-size: 3.5rem;
+    opacity: 0.1;
+    pointer-events: none;
+    white-space: pre;
+    z-index: 0;
+}
+
+.app-container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* ========== HEADER STYLES ========== */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.header-icon {
+    font-size: 3rem;
+    color: #a7f3d0;
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.4));
+}
+
+.app-header h1 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.badge {
+    background: #f59e0b;
+    font-size: 0.7rem;
+    color: #1e293b;
+    padding: 4px 10px;
+    border-radius: 40px;
+    vertical-align: middle;
+    margin-left: 8px;
+    font-weight: bold;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== MAIN SHOPPING CARD ========== */
+.shopping-card {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(2px);
+    border-radius: 2rem;
+    padding: 1.8rem 1.8rem 1.5rem;
+    box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.shopping-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 30px 50px -14px rgba(0, 0, 0, 0.6);
+}
+
+/* input section */
+.add-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.input-group {
+    flex: 3;
+    display: flex;
+    gap: 12px;
+}
+
+.input-group input {
+    flex: 2;
+    padding: 14px 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 60px;
+    font-size: 1rem;
+    background: white;
+    transition: all 0.2s;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.input-group-cost {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group-cost input {
+    width: 100%;
+    padding: 14px 14px 14px 34px;
+    border: 2px solid #e2e8f0;
+    border-radius: 60px;
+    font-size: 1rem;
+    background: white;
+}
+
+.cost-symbol {
+    position: absolute;
+    left: 14px;
+    color: #10b981;
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+/* buttons design */
+.btn {
+    border: none;
+    padding: 12px 22px;
+    border-radius: 60px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(95deg, #059669, #047857);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(95deg, #047857, #065f46);
+    transform: scale(0.97);
+}
+
+.btn-danger {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+    transform: scale(0.97);
+}
+
+/* stats bar */
+.stats-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f1f5f9;
+    padding: 12px 20px;
+    border-radius: 80px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03), 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stats-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    background: white;
+    padding: 6px 14px;
+    border-radius: 40px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.total-cost-box {
+    background: #059669;
+    color: white;
+}
+
+.total-cost-box i {
+    color: #fcd34d;
+}
+
+/* list container */
+.list-container {
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 6px;
+    margin-bottom: 18px;
+}
+
+.shopping-list-ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;  /* SPACE BETWEEN EACH ITEM */
+}
+
+/* ========== SHOPPING LIST ITEM STYLES ========== */
+/* Greyish background with blueish box shadow */
+.list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #eef2f5;  /* greyish background */
+    padding: 14px 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 18px -6px rgba(37, 99, 235, 0.35), 0 2px 6px rgba(0, 0, 0, 0.08);  /* blueish shadow */
+    transition: all 0.25s ease;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.list-item:hover {
+    transform: translateX(6px);
+    box-shadow: 0 12px 24px -8px rgba(37, 99, 235, 0.45), 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #f0f4f7;
+}
+
+/* item content (left side) */
+.item-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 5;
+    cursor: pointer;
+}
+
+.item-icon {
+    font-size: 1.6rem;
+    color: #059669;
+    width: 38px;
+    text-align: center;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.item-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.item-cost {
+    font-size: 0.8rem;
+    color: #059669;
+    font-weight: 600;
+    background: rgba(5, 150, 105, 0.12);
+    padding: 3px 10px;
+    border-radius: 40px;
+    display: inline-block;
+    width: fit-content;
+}
+
+/* purchased (marked) style */
+.list-item.purchased {
+    background: #d1fae5;
+    border-left: 5px solid #10b981;
+    box-shadow: 0 8px 18px -6px rgba(16, 185, 129, 0.4);
+}
+
+.list-item.purchased .item-name {
+    text-decoration: line-through;
+    color: #6b7280;
+}
+
+.list-item.purchased .item-icon {
+    color: #10b981;
+}
+
+/* action buttons group */
+.item-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.edit-btn, .delete-btn {
+    background: white;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    color: #4b5563;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.edit-btn:hover {
+    background: #fef3c7;
+    color: #f59e0b;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+}
+
+.delete-btn:hover {
+    background: #fee2e2;
+    color: #ef4444;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* empty placeholder styling */
+.empty-placeholder {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #94a3b8;
+}
+
+.empty-placeholder i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+}
+
+.footer-note {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #5c6f87;
+    background: #f8fafc;
+    padding: 8px 12px;
+    border-radius: 50px;
+}
+
+/* scrollbar styling */
+.list-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.list-container::-webkit-scrollbar-track {
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+    background: #059669;
+    border-radius: 10px;
+}
+
+/* responsiveness */
+@media (max-width: 580px) {
+    .shopping-card {
+        padding: 1.2rem;
+    }
+    .add-section {
+        flex-direction: column;
+    }
+    .stats-bar {
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 30px;
+    }
+    .list-item {
+        flex-wrap: wrap;
+        border-radius: 18px;
+        gap: 10px;
+    }
+    .item-actions {
+        margin-left: auto;
+    }
+}

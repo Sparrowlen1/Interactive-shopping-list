@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🛒 FreshMart | Interactive Shopping List</title>
+    <!-- Font Awesome 6 (free CDN for icons/images) -->
+     <script src="https://kit.fontawesome.com/6ae23c62b1.js" crossorigin="anonymous"></script>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Header with icon and title -->
+        <div class="app-header">
+            <i class="fas fa-leaf header-icon"></i>
+            <h1>Sparrowlen <span class="badge">shopping list</span></h1>
+        </div>
+
+        <!-- main shopping card -->
+        <div class="shopping-card">
+            <!-- input area -->
+            <div class="add-section">
+                <div class="input-group">
+                    <input type="text" id="itemNameInput" placeholder="e.g., Fresh Avocados 🥑" autocomplete="off">
+                    <button id="addBtn" class="btn btn-primary">
+                        <i class="fas fa-plus-circle"></i> Add item
+                    </button>
+                </div>
+                <div class="input-group-cost">
+                    <input type="number" id="itemCostInput" placeholder="Price ($)" step="0.01" min="0" value="0.00">
+                    <span class="cost-symbol"><i class="fas fa-dollar-sign"></i></span>
+                </div>
+            </div>
+
+            <!-- stats & total cost bar -->
+            <div class="stats-bar">
+                <div class="stats-item">
+                    <i class="fas fa-cart-shopping"></i> 
+                    <span id="itemCount">0</span> items
+                </div>
+                <div class="stats-item total-cost-box">
+                    <i class="fas fa-coins"></i> Total: 
+                    <span id="totalCostDisplay">$0.00</span>
+                </div>
+                <button id="clearAllBtn" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i> Clear List
+                </button>
+            </div>
+
+            <!-- shopping list container -->
+            <div class="list-container" id="shoppingListContainer">
+                <div class="empty-placeholder" id="emptyPlaceholder">
+                    <i class="fas fa-basket-shopping"></i>
+                    <p>Your shopping list is empty.<br>Add fresh groceries!</p>
+                </div>
+                <ul id="shoppingListUl" class="shopping-list-ul"></ul>
+            </div>
+
+            <!-- footer tip -->
+            <div class="footer-note">
+                <i class="fas fa-mouse-pointer"></i> Click on any item → mark as purchased 
+                | <i class="fas fa-pen"></i> Edit <i class="fas fa-pencil-alt"></i> icon
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
