@@ -197,6 +197,17 @@ body::after{
     padding-right: 6px;
     margin-bottom: 18px;
 }
+.empty-placeholder {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #102239;
+}
+
+.empty-placeholder i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+}
 .footer-note {
     margin-top: 20px;
     text-align: center;
