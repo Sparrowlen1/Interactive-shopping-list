@@ -33,3 +33,7 @@ function loadFromLocalStorage() {
     shoppingItems = shoppingItems.map(item => ({ ...item, purchased: item.purchased || false }));
     renderShoppingList();
 }
+
+function calculateTotalCost() {
+    return shoppingItems.reduce((sum,item) => sum + (item.cost || 0), 0);
+}
