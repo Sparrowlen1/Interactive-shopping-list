@@ -10,13 +10,13 @@ const emptyPlaceholder = document.getElementById('emptyPlaceholder');
 const itemCountSpan = document.getElementById('itemCount');
 const totalCostDisplaySpan = document.getElementById('totalCostDisplay');
 
-// Save to local storage
+// we are now saving to local storage
 function saveToLocalStorage() {
     localStorage.setItem('shoppingListApp', JSON.stringify(shoppingItems));
     localStorage.setItem('nextId', nextId);
 }
 
-// Load from local storage
+// Loading /retrieving from local storage
 function loadFromLocalStorage() {
     const stored = localStorage.getItem('shoppingListApp');
     if (stored) {
@@ -33,7 +33,7 @@ function loadFromLocalStorage() {
             { id: nextId++, name: 'Farm Fresh Eggs', cost: 5.99, purchased: false }
         ];
     }
-    // ensure all items have purchased flag (backward compat)
+    // ensure all items have purchased flag 
     shoppingItems = shoppingItems.map(item => ({ ...item, purchased: item.purchased || false }));
     renderShoppingList();
 }
@@ -43,7 +43,7 @@ function calculateTotalCost() {
     return shoppingItems.reduce((sum, item) => sum + (item.cost || 0), 0);
 }
 
-// update stats: item count and total cost
+// update stats them item count and total cost
 function updateStats() {
     const totalItems = shoppingItems.length;
     itemCountSpan.textContent = totalItems;
@@ -62,7 +62,7 @@ function toggleEmptyPlaceholder() {
     }
 }
 
-// render full list from array (DOM Manipulation)
+// render full list from array
 function renderShoppingList() {
     // clear current UL
     shoppingListUl.innerHTML = '';
@@ -81,11 +81,11 @@ function renderShoppingList() {
         if (item.purchased) li.classList.add('purchased');
         li.dataset.id = item.id;
         
-        // inner structure: left clickable area + action buttons
+        // inner structure them left clickable area + action buttons
         const itemContentDiv = document.createElement('div');
         itemContentDiv.className = 'item-content';
         
-        // icon based on fontawesome (image equivalent)
+        // icon based on fontawesome 
         const iconSpan = document.createElement('span');
         iconSpan.className = 'item-icon';
         iconSpan.innerHTML = item.purchased ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-shopping-basket"></i>';
@@ -196,7 +196,7 @@ function deleteItemById(id) {
     renderShoppingList();
 }
 
-// Edit existing item: prompt user to update name and cost
+// Edit existing item them prompt user to update name and cost
 function editItem(id) {
     const item = shoppingItems.find(i => i.id === id);
     if (!item) return;
@@ -229,7 +229,6 @@ function clearWholeList() {
     }
 }
 
-// ---------- EVENT LISTENERS (external, no inline JS) ----------
 addBtn.addEventListener('click', addNewItem);
 clearAllBtn.addEventListener('click', clearWholeList);
 
@@ -247,5 +246,5 @@ itemCostInput.addEventListener('keypress', (e) => {
     }
 });
 
-// ---------- INITIAL LOAD: Load from localStorage and render ----------
+
 loadFromLocalStorage();
