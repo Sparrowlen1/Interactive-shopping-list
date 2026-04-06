@@ -27,10 +27,10 @@ function loadFromLocalStorage() {
     } else {
         // default sample items for demonstration
         shoppingItems = [
-            { id: nextId++, name: 'Fresh Organic Bananas', cost: 3.49, purchased: false },
-            { id: nextId++, name: 'Whole Grain Bread', cost: 4.29, purchased: true },
-            { id: nextId++, name: 'Almond Milk', cost: 3.99, purchased: false },
-            { id: nextId++, name: 'Farm Fresh Eggs', cost: 5.99, purchased: false }
+            { id: nextId++, name: 'Fresh Organic Bananas', cost: 150, purchased: false },
+            { id: nextId++, name: 'Whole Grain Bread', cost: 180, purchased: true },
+            { id: nextId++, name: 'Almond Milk', cost: 100, purchased: false },
+            { id: nextId++, name: 'Farm Fresh Eggs', cost: 360, purchased: false }
         ];
     }
     // ensure all items have purchased flag 
@@ -40,15 +40,15 @@ function loadFromLocalStorage() {
 
 // calculate total cost of all items
 function calculateTotalCost() {
-    return shoppingItems.reduce((sum, item) => sum + (item.cost || 0), 0);
-}
+    return shoppingItems.reduce((sum, item) => sum + (item.cost || 0), 0); //the sum takes the current total and adds the items cost to it, if cost is not defined it defaults to 0
+} // this items.cost || 0  means if item.cost exists use it otherwise use 0
 
 // update stats them item count and total cost
 function updateStats() {
     const totalItems = shoppingItems.length;
     itemCountSpan.textContent = totalItems;
     const total = calculateTotalCost();
-    totalCostDisplaySpan.textContent = `$${total.toFixed(2)}`;
+    totalCostDisplaySpan.textContent = `ksh ${total.toFixed(2)}`;
 }
 
 // toggle empty placeholder visibility
@@ -99,7 +99,7 @@ function renderShoppingList() {
         
         const costSpan = document.createElement('span');
         costSpan.className = 'item-cost';
-        costSpan.innerHTML = `<i class="fas fa-tag"></i> $${(item.cost || 0).toFixed(2)}`;
+        costSpan.innerHTML = `<i class="fas fa-tag"></i> ksh ${(item.cost || 0).toFixed(2)}`;
         
         detailsDiv.appendChild(nameSpan);
         detailsDiv.appendChild(costSpan);
@@ -126,7 +126,7 @@ function renderShoppingList() {
         li.appendChild(itemContentDiv);
         li.appendChild(actionsDiv);
         
-        // Event Listeners:
+        
         // Mark as purchased on clicking the content area
         itemContentDiv.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -168,7 +168,7 @@ function addNewItem() {
     let cost = parseFloat(itemCostInput.value);
     
     if (name === '') {
-        alert('Please enter an item name! 🛒');
+        alert('Yooh enter an item name asap');
         return;
     }
     if (isNaN(cost) || cost < 0) {
@@ -205,16 +205,16 @@ function editItem(id) {
     if (newName !== null && newName.trim() !== '') {
         item.name = newName.trim();
     } else if (newName !== null && newName.trim() === '') {
-        alert('Item name cannot be empty. Keeping original name.');
+        alert('Yooh item cant be empty. keep original name.');
     }
     
-    let newCostInput = prompt(' Edit price (in $, numeric):', item.cost);
+    let newCostInput = prompt(' Edit price (in ksh, numeric):', item.cost);
     if (newCostInput !== null) {
         let newCost = parseFloat(newCostInput);
         if (!isNaN(newCost) && newCost >= 0) {
             item.cost = newCost;
         } else if (newCostInput !== '') {
-            alert('Invalid price. Keeping original cost.');
+            alert('Yooh Invalid price. Keeping original cost.');
         }
     }
     renderShoppingList();
@@ -222,7 +222,7 @@ function editItem(id) {
 
 // Clear entire list
 function clearWholeList() {
-    if (shoppingItems.length > 0 && confirm(' Clear entire shopping list? This action cannot be undone.')) {
+    if (shoppingItems.length > 0 && confirm('Yooh do you Want to clear entire shopping list? This action cannot be undone.')) {
         shoppingItems = [];
         nextId = 1;
         renderShoppingList();
