@@ -151,6 +151,7 @@ body::after{
 .btn-primary {
     background: linear-gradient(95deg, #059669, #047857);
     color: white;
+    margin-left: 10px;
 }
 .btn-primary:hover {
     background: linear-gradient(95deg, #047857, #059669);
